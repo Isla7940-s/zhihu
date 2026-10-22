@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+# 证据素材与大文件不入库
+cases/*/evidence/
+cases/*/out/segments*/
+cases/*/out/narration/*.wav
+cases/*/out/*.mp4
+assets/voices/*.onnx
+assets/voices/*.onnx.json
+node_modules/

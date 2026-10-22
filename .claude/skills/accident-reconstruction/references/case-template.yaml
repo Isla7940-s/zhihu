@@ -1,0 +1,43 @@
+case:
+  id: my-case                 # 目录名，仅 [a-z0-9-]
+  title: 一句话标题（不含定性词）
+  kind: dashcam               # dashcam | cctv
+  location: 未核实
+  date: 未知
+  source:
+    platform: 抖音
+    account: xxx
+    rights: 未取得原作者授权。仅限内部方法演示。
+  disclaimer: 基于公开视频的独立估算 · 含误差区间 · 非官方结论
+  outcome_known: false
+
+evidence:
+  video: evidence/source.mp4
+  measure_window: [0.0, 5.0]
+  watermark_boxes: []
+
+annotations:
+  horizon_y: {value: 360, sigma: 10}
+  lane: {t: 1.0, row: 560, left_x: 90, right_x: 600, width_m: {min: 3.5, max: 3.75}}
+  dashes:
+    roi: [400, 430, 760, 590]
+    rows: [460, 500]
+    window: [0.0, 3.0]
+    standards:
+      - {id: dash3_gap9, label: 3 m 线 + 9 m 间隔, dash_m: 3, period_m: 12}
+      - {id: dash6_gap9, label: 6 m 线 + 9 m 间隔（国标高速）, dash_m: 6, period_m: 15}
+  lead_vehicle:
+    label: 前车
+    width_m: {value: 2.50, sigma: 0.05}
+    x_start: 480
+    window: [1.0, 3.5]
+    sky_roi: [550, 150, 850, 220]
+  events:
+    - {t: 0.0, kind: context, label: ...}
+
+analysis:
+  mc_samples: 4000
+  seed: 42
+  reaction_s: [0.8, 1.5]
+  mu_wet: [0.4, 0.6]
+  recommended_headway_s: 3.0

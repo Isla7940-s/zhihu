@@ -1,0 +1,322 @@
+{
+  "id": "fog-highway-sandwich",
+  "title": "浓雾高速，小车被两台重卡夹在中间",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "voice": "zh_CN-huayan-medium",
+  "shots": [
+    {
+      "id": "hook",
+      "line": "浓雾高速，一台小车，被两台重卡夹在了中间。",
+      "visual": {
+        "type": "title",
+        "kicker": "事故重建 · Accident Reconstruction",
+        "title": "一段记录仪视频\n能算出什么？",
+        "subtitle": "浓雾高速 · 小车被两台重卡夹在中间",
+        "bg": "evidence",
+        "from": 7.0
+      }
+    },
+    {
+      "id": "raw",
+      "line": "先看原视频。记录仪在冲击瞬间黑屏，之后发生了什么，没人知道。",
+      "visual": {
+        "type": "evidence",
+        "from": 0,
+        "to": 12.45,
+        "rate": 1,
+        "overlays": [
+          "events"
+        ]
+      }
+    },
+    {
+      "id": "goal",
+      "line": "只用这一段视频，算三个数：多快，多近，能不能停住。",
+      "visual": {
+        "type": "stat",
+        "items": [
+          {
+            "label": "本车多快",
+            "value": "?",
+            "tone": "info"
+          },
+          {
+            "label": "离前车多近",
+            "value": "?",
+            "tone": "info"
+          },
+          {
+            "label": "来得及停吗",
+            "value": "?",
+            "tone": "info"
+          }
+        ]
+      },
+      "pad": 1.0
+    },
+    {
+      "id": "method",
+      "line": "方法分四步：取证，测速，测距，重建。",
+      "visual": {
+        "type": "method",
+        "steps": [
+          {
+            "title": "取证",
+            "desc": "重复帧 · 真实时间轴"
+          },
+          {
+            "title": "测速",
+            "desc": "车道虚线当尺子"
+          },
+          {
+            "title": "测距",
+            "desc": "前车宽度 → 距离"
+          },
+          {
+            "title": "重建",
+            "desc": "三维场景 · 证据分级"
+          }
+        ]
+      },
+      "pad": 1.2
+    },
+    {
+      "id": "forensics",
+      "line": "第一步，取证。视频标称每秒六十帧，但大多是重复帧，真实画面约每秒30帧。重复帧不剔掉，时间就会算错。",
+      "visual": {
+        "type": "chart",
+        "kind": "forensics"
+      }
+    },
+    {
+      "id": "dash",
+      "line": "第二步，测速。尺子就画在路上：车道虚线。相邻两段扫过同一位置，间隔约0.65秒。",
+      "visual": {
+        "type": "evidence",
+        "from": 0.0,
+        "to": 2.9,
+        "rate": 0.5,
+        "overlays": [
+          "dashes"
+        ],
+        "caption": "虚线逐帧检出（绿框）"
+      }
+    },
+    {
+      "id": "duty",
+      "line": "换算要看虚线规格。实测线段只占周期的18%，更像三米线、九米间隔，对应本车约67公里每小时；如果是国内高速的六加九规格，则是83。",
+      "visual": {
+        "type": "chart",
+        "kind": "hypotheses"
+      }
+    },
+    {
+      "id": "decel",
+      "line": "两秒后周期变长，本车开始减速，降到约54公里每小时。",
+      "visual": {
+        "type": "chart",
+        "kind": "speed"
+      }
+    },
+    {
+      "id": "lead",
+      "line": "第三步，测距。前面的自卸车，货厢宽约二点五米，它在画面里越变越宽。",
+      "visual": {
+        "type": "evidence",
+        "from": 0.9,
+        "to": 3.8,
+        "rate": 0.6,
+        "overlays": [
+          "lead"
+        ],
+        "caption": "前车左右边沿逐帧测量"
+      }
+    },
+    {
+      "id": "gap",
+      "line": "换算下来，一点四秒时两车只隔约10.6米，本车比前车快13公里每小时。",
+      "visual": {
+        "type": "chart",
+        "kind": "gap"
+      }
+    },
+    {
+      "id": "headway",
+      "line": "车头时距只有0.56秒。这个数与虚线规格无关，两种假设都一样。雾天建议至少三秒。",
+      "visual": {
+        "type": "stat",
+        "items": [
+          {
+            "label": "车头时距",
+            "value": "0.56 s",
+            "note": "90% 区间 0.42–0.72",
+            "tone": "warn"
+          },
+          {
+            "label": "雾天建议",
+            "value": "≥ 3 s",
+            "note": "约 56 m",
+            "tone": "ok"
+          }
+        ],
+        "caption": "车头时距 = 车距 ÷ 本车速度，与标线尺度无关"
+      }
+    },
+    {
+      "id": "stopping",
+      "line": "湿滑路面上，本车从发现危险到停稳约需57米。前车一脚急刹，后车几乎没有余地。",
+      "visual": {
+        "type": "chart",
+        "kind": "stopping"
+      }
+    },
+    {
+      "id": "timeline",
+      "line": "把过程按时间排开。",
+      "visual": {
+        "type": "timeline"
+      },
+      "pad": 4.0
+    },
+    {
+      "id": "recon1",
+      "line": "第四步，三维重建。前三秒半是实测段：本车紧跟在自卸车后面。",
+      "visual": {
+        "type": "scene3d",
+        "camera": "chase",
+        "from": 0.3,
+        "to": 3.6,
+        "gaps": [
+          {
+            "from": "ego",
+            "to": "dump",
+            "label": "≈ 10.6 m"
+          }
+        ],
+        "labels": [
+          "dump"
+        ],
+        "showEvidence": true
+      }
+    },
+    {
+      "id": "recon2",
+      "line": "随后本车向右变道，与自卸车几乎并排。雾里，前方出现一台灰色车辆。",
+      "visual": {
+        "type": "scene3d",
+        "camera": "top",
+        "from": 3.4,
+        "to": 6.8,
+        "labels": [
+          "ego",
+          "dump",
+          "grey"
+        ],
+        "showEvidence": true
+      }
+    },
+    {
+      "id": "recon3",
+      "line": "自卸车向右急打方向，车尾甩出，横在了路面上。",
+      "visual": {
+        "type": "scene3d",
+        "camera": "chase",
+        "from": 6.4,
+        "to": 9.4,
+        "labels": [
+          "dump"
+        ],
+        "showEvidence": true,
+        "caption": "7 s 之后为示意推定"
+      }
+    },
+    {
+      "id": "recon4",
+      "line": "本车刹停在它后方，左侧的平头货车也冲了上来。最后零点七秒，画面急速逼近，随后冲击，记录中断。",
+      "visual": {
+        "type": "scene3d",
+        "camera": "finale",
+        "from": 8.6,
+        "to": 12.4,
+        "labels": [
+          "ego",
+          "dump",
+          "white"
+        ],
+        "showEvidence": true,
+        "caption": "示意推定 · 碰撞先后无法从单段视频确定"
+      }
+    },
+    {
+      "id": "caveat",
+      "line": "七秒以后的重建只是示意。单段视频无法确定碰撞先后，伤亡和责任也不清楚，我们不做推测。",
+      "visual": {
+        "type": "evidence",
+        "from": 11.4,
+        "to": 12.4,
+        "rate": 0.35,
+        "freezeAt": 12.1,
+        "caption": "12.4 s 画面中断"
+      }
+    },
+    {
+      "id": "lesson",
+      "line": "能带走三条：车速跟着能见度走；跟车至少三秒；停在车道上，开双闪，人撤到护栏外。",
+      "visual": {
+        "type": "lesson",
+        "items": [
+          {
+            "title": "车速跟着能见度走",
+            "desc": "看不清多远，就别开得比能停住的距离更快"
+          },
+          {
+            "title": "跟车至少 3 秒",
+            "desc": "本车当时只有 0.56 秒"
+          },
+          {
+            "title": "停车后人先撤离",
+            "desc": "开双闪 · 人到护栏外 · 来车方向放警示牌"
+          }
+        ]
+      }
+    },
+    {
+      "id": "end",
+      "line": "以上是基于公开视频的独立估算，含误差区间，不是官方结论。",
+      "visual": {
+        "type": "end",
+        "lines": [
+          "基于公开视频的独立估算 · 含误差区间 · 非官方结论",
+          "事发地点未核实 · 结果未知 · 不做推测",
+          "方法与代码：crashlab"
+        ]
+      }
+    }
+  ],
+  "vars": {
+    "fps_real": "30",
+    "period": "0.65",
+    "duty_pct": "18%",
+    "ego": "67",
+    "ego_lo": "63",
+    "ego_hi": "70",
+    "ego_alt": "83",
+    "ego_late": "54",
+    "gap": "10.6",
+    "gap_lo": "7.9",
+    "gap_hi": "13.8",
+    "closing": "13",
+    "lead_kmh": "53",
+    "ttc": "2.9",
+    "headway": "0.56",
+    "headway_lo": "0.42",
+    "headway_hi": "0.72",
+    "stop": "57",
+    "rec_gap": "56",
+    "vis": "211"
+  }
+}

@@ -1,0 +1,68 @@
+# 案例：浓雾高速，小车被两台重卡夹在中间
+# 所有“人工标注”字段都应能在 Studio 的标注面板里点选得到，这里是落盘结果。
+case:
+  id: fog-highway-sandwich
+  title: 浓雾高速，小车被两台重卡夹在中间
+  kind: dashcam            # dashcam = 运动相机（行车记录仪）；cctv = 固定机位
+  location: 未核实          # 网传“冰岛”，但画面里没有能支持的线索（车型为陕汽重卡，标线规格也对不上），不做断言
+  date: 未知
+  source:
+    platform: 抖音
+    account: NDMZS.GS3Y
+    rights: 未取得原作者授权。仅限内部方法演示；公开发布前必须取得授权或改用自有/授权素材。
+  disclaimer: 基于公开视频的独立估算 · 含误差区间 · 非官方结论
+  outcome_known: false     # 画面在冲击瞬间中断，伤亡与责任均未知，脚本不得推测
+
+evidence:
+  video: evidence/source.mp4
+  measure_window: [0.0, 5.0]        # 只把这段读进内存做测量
+  watermark_boxes:                    # 平台水印区域，渲染成片时打码/裁掉
+    - [0, 0, 240, 120]
+    - [700, 600, 962, 720]
+
+annotations:
+  horizon_y: {value: 360, sigma: 10}  # 由左侧实线与车道虚线延长线交点得到（t=1.0s 帧）
+  lane:                                # t=1.0s 帧第 560 行：左侧实线与虚线的 x
+    t: 1.0
+    row: 560
+    left_x: 90
+    right_x: 600
+    width_m: {min: 3.5, max: 3.75}
+  dashes:
+    roi: [400, 430, 760, 590]          # 虚线检测区 x0,y0,x1,y1（避开引擎盖反光）
+    rows: [460, 500]                   # 用这两行的越线时刻测周期和尺度
+    window: [0.0, 2.95]
+    standards:
+      - id: dash3_gap9
+        label: 3 m 线 + 9 m 间隔
+        dash_m: 3
+        period_m: 12
+      - id: dash6_gap9
+        label: 6 m 线 + 9 m 间隔（国标高速）
+        dash_m: 6
+        period_m: 15
+  lead_vehicle:
+    label: 自卸车
+    width_m: {value: 2.50, sigma: 0.05}  # 货厢外宽，法规上限 2.55 m
+    x_start: 425
+    window: [0.9, 3.8]
+    sky_roi: [550, 150, 850, 220]
+  events:
+    - {t: 0.0,  kind: context, label: 本车从左侧超越黄色厢货}
+    - {t: 1.0,  kind: measure, label: 开始快速接近前方自卸车}
+    - {t: 3.6,  kind: maneuver, label: 本车向右变道，与自卸车并行}
+    - {t: 5.2,  kind: hazard,  label: 雾中出现右侧车道上的灰色车辆}
+    - {t: 6.8,  kind: maneuver, label: 自卸车并入本车前方}
+    - {t: 7.25, kind: loss,    label: 自卸车车尾开始甩动}
+    - {t: 8.0,  kind: loss,    label: 自卸车横在前方路面}
+    - {t: 9.25, kind: hazard,  label: 左侧出现白红涂装平头货车}
+    - {t: 11.5, kind: hazard,  label: 自卸车车头逼近本车右前方}
+    - {t: 12.2, kind: impact,  label: 剧烈冲击}
+    - {t: 12.3, kind: end,     label: 画面中断}
+
+analysis:
+  mc_samples: 4000
+  seed: 42
+  reaction_s: [0.8, 1.5]     # 驾驶员反应时间区间
+  mu_wet: [0.4, 0.6]         # 湿滑沥青附着系数区间
+  recommended_headway_s: 3.0 # 雾天建议车头时距

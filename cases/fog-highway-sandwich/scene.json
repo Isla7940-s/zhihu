@@ -1,0 +1,610 @@
+{
+ "id": "fog-highway-sandwich",
+ "title": "浓雾高速，小车被两台重卡夹在中间",
+ "duration": 12.4,
+ "road": {
+  "centerline": [
+   [
+    -100,
+    0
+   ],
+   [
+    0,
+    0
+   ],
+   [
+    100,
+    0
+   ],
+   [
+    160,
+    -3
+   ],
+   [
+    220,
+    -12
+   ],
+   [
+    280,
+    -27
+   ],
+   [
+    340,
+    -48
+   ]
+  ],
+  "lanes": 2,
+  "laneWidth": 3.75,
+  "dash": {
+   "line": 3,
+   "gap": 9
+  },
+  "shoulderLeft": 0.75,
+  "shoulderRight": 2.5,
+  "guardrailLeft": true,
+  "guardrailRight": true,
+  "surface": "wet"
+ },
+ "environment": {
+  "fogVisibility": 180,
+  "timeOfDay": "day",
+  "ground": "snow"
+ },
+ "props": [],
+ "actors": [
+  {
+   "id": "ego",
+   "asset": "sedan",
+   "label": "本车（记录仪）",
+   "params": {
+    "color": "#b7bdc4"
+   },
+   "keys": [
+    {
+     "t": 0,
+     "s": 100,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "measured"
+    },
+    {
+     "t": 1.0,
+     "s": 118.5,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "measured"
+    },
+    {
+     "t": 2.0,
+     "s": 137,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "measured"
+    },
+    {
+     "t": 2.8,
+     "s": 150.4,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "measured"
+    },
+    {
+     "t": 3.5,
+     "s": 160.9,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 4.1,
+     "s": 169.9,
+     "d": 0,
+     "yaw": -3,
+     "evidence": "estimated"
+    },
+    {
+     "t": 4.7,
+     "s": 178.9,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 5.6,
+     "s": 192.4,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 6.5,
+     "s": 204.1,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 7.0,
+     "s": 209.0,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 8.0,
+     "s": 215.4,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 8.9,
+     "s": 217.4,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 9.3,
+     "s": 217.4,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 11.5,
+     "s": 224.0,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 12.2,
+     "s": 229.4,
+     "d": -1.875,
+     "yaw": 4,
+     "evidence": "assumed"
+    },
+    {
+     "t": 12.4,
+     "s": 229.6,
+     "d": -1.875,
+     "yaw": 4,
+     "evidence": "assumed"
+    }
+   ],
+   "lights": [
+    {
+     "from": 5.6,
+     "to": 12.4,
+     "mode": "brake"
+    }
+   ]
+  },
+  {
+   "id": "dump",
+   "asset": "dump-truck",
+   "label": "自卸车",
+   "params": {},
+   "keys": [
+    {
+     "t": 0,
+     "s": 121.6,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 0.9,
+     "s": 134.65,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "measured"
+    },
+    {
+     "t": 1.9,
+     "s": 149.4,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "measured"
+    },
+    {
+     "t": 3.4,
+     "s": 169.8,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "measured"
+    },
+    {
+     "t": 5.0,
+     "s": 192.4,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 6.2,
+     "s": 209.3,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 6.8,
+     "s": 216.5,
+     "d": 0.6,
+     "yaw": -5,
+     "evidence": "estimated"
+    },
+    {
+     "t": 7.0,
+     "s": 218.7,
+     "d": -1.0,
+     "yaw": -9,
+     "evidence": "estimated"
+    },
+    {
+     "t": 7.5,
+     "s": 225.0,
+     "d": -2.0,
+     "yaw": -30,
+     "evidence": "assumed"
+    },
+    {
+     "t": 8.0,
+     "s": 230.0,
+     "d": -2.3,
+     "yaw": -58,
+     "evidence": "assumed"
+    },
+    {
+     "t": 8.6,
+     "s": 233.5,
+     "d": -2.0,
+     "yaw": -76,
+     "evidence": "assumed"
+    },
+    {
+     "t": 9.2,
+     "s": 234.6,
+     "d": -1.9,
+     "yaw": -82,
+     "evidence": "assumed"
+    },
+    {
+     "t": 12.4,
+     "s": 234.6,
+     "d": -1.9,
+     "yaw": -82,
+     "evidence": "assumed"
+    }
+   ],
+   "lights": [
+    {
+     "from": 6.6,
+     "to": 12.4,
+     "mode": "brake"
+    }
+   ]
+  },
+  {
+   "id": "white",
+   "asset": "flat-nose-truck",
+   "label": "平头货车",
+   "params": {},
+   "keys": [
+    {
+     "t": 0,
+     "s": 50,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 6.0,
+     "s": 160,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 8.0,
+     "s": 199,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 9.0,
+     "s": 213.5,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 9.3,
+     "s": 217.6,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 10.5,
+     "s": 220.5,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 11.5,
+     "s": 224.2,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 12.2,
+     "s": 228.8,
+     "d": 1.575,
+     "yaw": -3,
+     "evidence": "assumed"
+    },
+    {
+     "t": 12.4,
+     "s": 229.0,
+     "d": 1.575,
+     "yaw": -3,
+     "evidence": "assumed"
+    }
+   ],
+   "lights": [
+    {
+     "from": 7.5,
+     "to": 12.4,
+     "mode": "brake"
+    }
+   ]
+  },
+  {
+   "id": "grey",
+   "asset": "van",
+   "label": "前方灰色车辆",
+   "params": {
+    "color": "#8f969e"
+   },
+   "keys": [
+    {
+     "t": 0,
+     "s": 240,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 12.4,
+     "s": 240,
+     "d": 1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    }
+   ],
+   "lights": []
+  },
+  {
+   "id": "yellow",
+   "asset": "box-truck",
+   "label": "黄色厢货",
+   "params": {},
+   "keys": [
+    {
+     "t": 0,
+     "s": 110.5,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 0.9,
+     "s": 121.75,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "estimated"
+    },
+    {
+     "t": 4.0,
+     "s": 158,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 7.0,
+     "s": 180,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 8.5,
+     "s": 183,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    },
+    {
+     "t": 12.4,
+     "s": 183,
+     "d": -1.875,
+     "yaw": 0,
+     "evidence": "assumed"
+    }
+   ],
+   "lights": [
+    {
+     "from": 5.5,
+     "to": 12.4,
+     "mode": "brake"
+    }
+   ]
+  }
+ ],
+ "cameras": [
+  {
+   "id": "chase",
+   "label": "追尾视角",
+   "mode": "follow",
+   "target": "ego",
+   "keys": [
+    {
+     "t": 0,
+     "offset": [
+      -15,
+      0.6,
+      6.8
+     ],
+     "lookAt": [
+      16,
+      -0.4,
+      1.0
+     ],
+     "fov": 46
+    }
+   ]
+  },
+  {
+   "id": "dashcam",
+   "label": "记录仪视角",
+   "mode": "follow",
+   "target": "ego",
+   "keys": [
+    {
+     "t": 0,
+     "offset": [
+      0.5,
+      0,
+      1.32
+     ],
+     "lookAt": [
+      25,
+      0,
+      1.2
+     ],
+     "fov": 64
+    }
+   ]
+  },
+  {
+   "id": "top",
+   "label": "俯视",
+   "mode": "follow",
+   "target": "ego",
+   "keys": [
+    {
+     "t": 0,
+     "offset": [
+      4,
+      0.01,
+      48
+     ],
+     "lookAt": [
+      14,
+      0,
+      0
+     ],
+     "fov": 42
+    }
+   ]
+  },
+  {
+   "id": "side",
+   "label": "侧视",
+   "mode": "follow",
+   "target": "ego",
+   "keys": [
+    {
+     "t": 0,
+     "offset": [
+      4,
+      -16,
+      4
+     ],
+     "lookAt": [
+      6,
+      0,
+      1.2
+     ],
+     "fov": 50
+    }
+   ]
+  },
+  {
+   "id": "finale",
+   "label": "终局环绕",
+   "mode": "world",
+   "keys": [
+    {
+     "t": 7.0,
+     "pos": [
+      200,
+      -22,
+      14
+     ],
+     "lookAt": [
+      226,
+      0,
+      1
+     ],
+     "fov": 45
+    },
+    {
+     "t": 10.0,
+     "pos": [
+      214,
+      -26,
+      10
+     ],
+     "lookAt": [
+      229,
+      0,
+      1
+     ],
+     "fov": 42
+    },
+    {
+     "t": 12.4,
+     "pos": [
+      240,
+      -20,
+      9
+     ],
+     "lookAt": [
+      230,
+      0,
+      1
+     ],
+     "fov": 40
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "from": 0,
+   "to": 3.4,
+   "text": "0–3.4 s：由虚线周期与前车宽度实测",
+   "evidence": "measured"
+  },
+  {
+   "from": 3.4,
+   "to": 7.0,
+   "text": "3.4–7 s：由画面相对位置推算",
+   "evidence": "estimated"
+  },
+  {
+   "from": 7.0,
+   "to": 12.4,
+   "text": "7 s 之后：单目画面无法精确恢复，仅为示意推定",
+   "evidence": "assumed"
+  }
+ ]
+}
