@@ -48,3 +48,17 @@ def test_chain_sim_sandwich():
     assert all(c.t_first is not None for c in r.contacts)  # 两次碰撞都发生了
     car = 1
     assert r.front(car)[-1] - r.rear(car)[-1] < 4.0  # 被压缩
+
+
+def test_scene_lint_flags_overlap_outside_impact():
+    from crashlab.scene_lint import lint_scene
+
+    def key(t, s, d=0.0, yaw=0.0):
+        return {"t": t, "s": s, "d": d, "yaw": yaw}
+
+    scene = {"duration": 4.0, "actors": [
+        {"id": "a", "asset": "sedan", "keys": [key(0, 0), key(4, 40)]},
+        {"id": "b", "asset": "sedan", "keys": [key(0, 30), key(4, 30)]},  # 静止，a 在约 2.6 s 穿过它
+    ]}
+    assert lint_scene(scene, impact_times=[])
+    assert not lint_scene(scene, impact_times=[3.0], window=1.0)

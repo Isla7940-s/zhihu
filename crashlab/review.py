@@ -52,6 +52,9 @@ def review_case(case: Case) -> bool:
         noted = any(n.get("evidence") == "assumed" for n in scene.get("notes", []))
         if assumed and not noted:
             warns.append("scene.json 有示意推定的关键帧，但 notes 里没有说明")
+        from .scene_lint import lint_scene
+        impacts = [e["t"] for e in case.ann.get("events", []) if e.get("kind") in ("impact", "end")]
+        warns += lint_scene(scene, impacts)
     report = {"ok": not errors, "publishable": publishable and not errors, "errors": errors, "warnings": warns}
     save_json(report, case.out / "review.json")
     for e in errors:

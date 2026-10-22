@@ -62,6 +62,11 @@ python -m crashlab frames cases/<id>      # → apps/studio/public/cases/<id>/fr
 - 测量段的位置直接由 analysis.json 换算（车头到相机偏移 + 车距 + 半车长）。
   画面看不出来的东西（碰撞先后、受力、结果）**不要演**；需要示意时标 `assumed` 并在旁白里说明。
 - 在 Studio 的“三维重建”页拖时间轴、切机位、改关键帧并保存。
+- **逐段对照原视频核对**：把“记录仪视角”机位和原视频同一时刻并排看，确认每辆车在哪条车道、
+  左右前后关系对不对。示例案例里曾把路边灰色车放错车道，就是靠这一步发现的。
+- `review` 会跑穿模检测（`crashlab/scene_lint.py`）：碰撞时刻之外两车包络重叠会报警——
+  重叠在画面上等于“演了一次碰撞”，没有证据就调轨迹直到报警消失。
+- 第三方车辆别贴着跟随机位：近处的大车会把镜头整个挡住，先用俯视机位检查站位。
 
 ## 5. 分镜脚本（story.json）
 
@@ -80,6 +85,11 @@ node scripts/render-video.mjs <id> --workers 3   # → cases/<id>/out/<id>.mp4
 ```
 
 一条龙：`python -m crashlab all cases/<id>` 后再渲染。渲染在纯 CPU（SwiftShader）下约 0.8 s/帧（3D 镜头），2D 镜头约 0.15 s/帧。
+
+- 只重渲某一段：`--from <s> --to <s> --tag <名字>`，产物在 `out/segments_<名字>/` 与 `out/<id>_<名字>.mp4`。
+  分段边界按帧对齐（`--from` 取 帧号/fps 之后一点点，避免四舍五入重复一帧）。
+- 改了 `scene.json` / `story.json` 不需要重新 build（服务端按请求读文件）；改了前端代码才需要。
+- 改了旁白文字要重跑 `tts`，镜头时长会变，整片都得重渲。
 
 ## 7. 交付前自检
 
